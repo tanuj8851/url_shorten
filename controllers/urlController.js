@@ -3,27 +3,51 @@ import urlModel from "../models/Url.js";
 
 export const generateShortUrl = async (req, res) => {
   try {
-    const body = req.body;
-    if (!body.url)
+    const { url: originalUrl } = req.body;
+
+    if (!originalUrl) {
       return res
         .status(400)
-        .send({ success: false, message: "Url is required" });
+        .send({ success: false, message: "URL is required" });
+    }
 
-    const shortUrl = nanoid(8);
-
-    await urlModel.create({
-      shortId: shortUrl,
-      redirectUrl: body.url,
+    const existingUrl = await urlModel.findOne({
+      redirectUrl: originalUrl,
     });
 
-    res
-      .status(201)
-      .send({ success: true, message: "Short Url Generated", shortUrl });
+    if (existingUrl) {
+      return res.status(200).send({
+        success: true,
+        message: "Short URL already exists",
+        shortUrl: `${req.headers.host}/url/${existingUrl.shortId}`,
+      });
+    }
+
+    let shortId;
+    let idExists;
+    do {
+      shortId = nanoid(8);
+      idExists = await urlModel.findOne({ shortId });
+    } while (idExists);
+
+    const newUrl = new urlModel({
+      shortId,
+      redirectUrl: originalUrl,
+    });
+
+    await newUrl.save();
+
+    res.status(201).send({
+      success: true,
+      message: "Short URL generated successfully",
+      shortUrl: `${req.headers.host}/url/${shortId}`,
+    });
   } catch (error) {
-    console.log(error);
-    res
-      .status(500)
-      .send({ message: "Something Wrong while generating Short URl" });
+    console.error(error);
+    res.status(500).send({
+      message: "Something went wrong while generating short URL",
+      error,
+    });
   }
 };
 

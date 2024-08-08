@@ -17,11 +17,10 @@ export const registerController = async (req, res) => {
       });
     }
 
-    //register user
-
+    //hashing password
     const hashedPassword = await hashPassword(password);
 
-    //save
+    //save into db
     const user = await new userModel({
       username,
       email,
@@ -64,6 +63,14 @@ export const loginController = async (req, res) => {
     //token generation
     const token = await jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
+    });
+
+    //token storing into cookie
+    res.cookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+      maxAge: "7d",
     });
 
     res.status(201).send({

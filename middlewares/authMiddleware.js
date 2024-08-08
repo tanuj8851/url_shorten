@@ -3,10 +3,9 @@ import jwt from "jsonwebtoken";
 //protected route token base
 export const requireSignIn = async (req, res, next) => {
   try {
-    const decode = jwt.verify(
-      req.headers.authorization,
-      process.env.JWT_SECRET
-    );
+    const authorization = req.headers.authorization || req.cookies.token;
+
+    const decode = jwt.verify(authorization, process.env.JWT_SECRET);
     req.user = decode;
     next();
   } catch (error) {
