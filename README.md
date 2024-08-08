@@ -74,13 +74,13 @@ port = # default 3000
 
 # JWT
 JWT_SECRET= # company
-
+```
 
 ## Project Structure
 
 ```
 BOOKS_ASSIGNMENT\ 
- |--config\         # Environment variables and db connection
+ |--config\         # Swagger and db connection
  |--controllers\    # Auth/user and Url Controllers
  |--middlewares\    # Custom express middlewares
  |--models\         # Auth/user and URL Mongoose models/Schemas
