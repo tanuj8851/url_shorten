@@ -31,7 +31,7 @@ Set the environment variables:
 
 
 ## Swagger URL
-Access the API documentation here: [Swagger UI](http://books-assignment.onrender.com/api-docs/#/)
+Access the API documentation here: [Swagger UI](https://url-shorten-uxov.onrender.com/api-docs/#/)
 
 
 ## Table of Contents
@@ -110,7 +110,7 @@ List of available routes:
 
 
 ### How to Use
-1. **Swagger Documentation**: Access the API documentation at [Swagger UI](http:/books-assignment.onrender.com/api-docs/#/).
+1. **Swagger Documentation**: Access the API documentation at [Swagger UI](https://url-shorten-uxov.onrender.com/api-docs/#/).
 2. **User Registration and Login**: Use the provided endpoints to register a new user and log in to receive a token.
 3. **Manage Books**: Add, view, search,Update and delete books using the respective endpoints.
 
