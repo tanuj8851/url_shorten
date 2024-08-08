@@ -11,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:8001",
+        url: "https://url-shorten-uxov.onrender.com/",
       },
     ],
   },
