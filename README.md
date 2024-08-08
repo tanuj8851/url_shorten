@@ -79,7 +79,7 @@ JWT_SECRET= # company
 ## Project Structure
 
 ```
-BOOKS_ASSIGNMENT\ 
+URL-SHORTEN\ 
  |--config\         # Swagger and db connection
  |--controllers\    # Auth/user and Url Controllers
  |--middlewares\    # Custom express middlewares
