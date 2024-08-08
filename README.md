@@ -112,7 +112,7 @@ List of available routes:
 ### How to Use
 1. **Swagger Documentation**: Access the API documentation at [Swagger UI](https://url-shorten-uxov.onrender.com/api-docs/#/).
 2. **User Registration and Login**: Use the provided endpoints to register a new user and log in to receive a token.
-3. **Manage Books**: Add, view, search,Update and delete books using the respective endpoints.
+3. **Manage URL**:ADD the redirect url and provide the shorten url using the respective endpoints.
 
 
 
